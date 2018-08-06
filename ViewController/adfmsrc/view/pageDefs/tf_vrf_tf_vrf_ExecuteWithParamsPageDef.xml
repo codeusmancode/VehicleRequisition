@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"
+                id="tf_vrf_tf_vrf_ExecuteWithParamsPageDef" Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="CustVehicleReqHeaderVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CustVehicleReqHeaderVO1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="CustVehicleReqHeaderVO1Iterator" id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="USER_ID" NDValue="#{sessionScope.userid}" NDType="oracle.jbo.domain.Number"/>
+    </action>
+  </bindings>
+</pageDefinition>

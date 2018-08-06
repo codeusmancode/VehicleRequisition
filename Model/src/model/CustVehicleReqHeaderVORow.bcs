@@ -1,0 +1,12 @@
+//Groovy Scripts for model.CustVehicleReqHeaderVO
+
+package model
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="VrDemandDate")
+def VrDemandDate_ExpressionScript_Expression()
+{
+adf.currentDate
+}
+

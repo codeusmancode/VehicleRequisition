@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="VehicleRequisitionPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CustVehicleReqHeaderVO1" RangeSize="10" DataControl="AppModuleDataControl"
+              id="CustVehicleReqHeaderVO1Iterator" Refresh="default"/>
+    <searchRegion Binds="CustVehicleReqHeaderVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="CustVehicleReqHeaderVO1Query"/>
+  </executables>
+  <bindings>
+    <action IterBinding="CustVehicleReqHeaderVO1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <methodAction IterBinding="CustVehicleReqHeaderVO1Iterator" id="initiateWorkflow" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="initiateWorkflow" IsViewObjectMethod="false"
+                  DataControl="AppModuleDataControl" InstanceName="bindings.CustVehicleReqHeaderVO1Iterator.currentRow"
+                  IsLocalObjectReference="true">
+      <NamedData NDName="reqID" NDType="int"/>
+    </methodAction>
+    <tree IterBinding="CustVehicleReqHeaderVO1Iterator" id="CustVehicleReqHeaderVO1">
+      <nodeDefinition DefName="model.CustVehicleReqHeaderVO" Name="CustVehicleReqHeaderVO10">
+        <AttrNames>
+          <Item Value="VrReqId"/>
+          <Item Value="VrRequisitionNumber"/>
+          <Item Value="DepId"/>
+          <Item Value="VrDemandDate"/>
+          <Item Value="VrRequiredDate"/>
+          <Item Value="VehicleTypeId"/>
+          <Item Value="Purpose"/>
+          <Item Value="ApproxDuration"/>
+          <Item Value="ApproxDistance"/>
+          <Item Value="Status"/>
+          <Item Value="VrOrgId"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdatedDate"/>
+          <Item Value="VersionNumber"/>
+          <Item Value="UserId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="CustVehicleReqHeaderVO1Iterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+  </bindings>
+</pageDefinition>

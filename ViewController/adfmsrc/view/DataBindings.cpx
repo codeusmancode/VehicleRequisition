@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.12.24" id="DataBindings"
+             SeparateXMLFiles="false" Package="view" ClientType="Generic">
+  <pageMap>
+    <page path="/VehicleRequisition.jsf" usageId="view_VehicleRequisitionPageDef"/>
+    <page path="/untitled1.jsf" usageId="view_untitled1PageDef"/>
+    
+  
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_VehicleRequisitionPageDef" path="view.pageDefs.VehicleRequisitionPageDef"/>
+    <page id="view_untitled1PageDef" path="view.pageDefs.untitled1PageDef"/>
+    <page id="view_tf_vrf_tf_vrf_ExecuteWithParamsPageDef" path="view.pageDefs.tf_vrf_tf_vrf_ExecuteWithParamsPageDef"/>
+    <page id="view_vrfPageDef" path="view.pageDefs.vrfPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleDataControl" Package="model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

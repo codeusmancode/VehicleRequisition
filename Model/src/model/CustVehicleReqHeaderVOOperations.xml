@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding='windows-1252'?>
+<!DOCTYPE OperationDefinitions SYSTEM "jbo_03_01.dtd">
+<OperationDefinitions xmlns="http://xmlns.oracle.com/bc4j" Name="CustVehicleReqHeaderVOOperations">
+  <ExpressionCodeSource
+    Name="CustVehicleReqHeaderVORow"
+    Type="Static"
+    URI="model/CustVehicleReqHeaderVORow.bcs"/>
+  <ExpressionCodeSource
+    Name="CustVehicleReqHeaderVO"
+    Type="Static"
+    URI="model/CustVehicleReqHeaderVO.bcs"/>
+</OperationDefinitions>

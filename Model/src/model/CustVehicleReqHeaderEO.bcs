@@ -1,0 +1,12 @@
+//Groovy Scripts for model.CustVehicleReqHeaderEO
+
+package model
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="VrReqId")
+def VrReqId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("cust_vr_req_id",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

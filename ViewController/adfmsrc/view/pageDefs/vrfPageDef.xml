@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="vrfPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CustVehicleReqHeaderVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CustVehicleReqHeaderVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="CustVehicleReqHeaderVO1Iterator" id="CustVehicleReqHeaderVO1">
+      <nodeDefinition DefName="model.CustVehicleReqHeaderVO" Name="CustVehicleReqHeaderVO10">
+        <AttrNames>
+          <Item Value="VrReqId"/>
+          <Item Value="VrRequisitionNumber"/>
+          <Item Value="DepId"/>
+          <Item Value="VrDemandDate"/>
+          <Item Value="VrRequiredDate"/>
+          <Item Value="VehicleTypeId"/>
+          <Item Value="Purpose"/>
+          <Item Value="ApproxDuration"/>
+          <Item Value="ApproxDistance"/>
+          <Item Value="Status"/>
+          <Item Value="VrOrgId"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdatedDate"/>
+          <Item Value="VersionNumber"/>
+          <Item Value="UserId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
