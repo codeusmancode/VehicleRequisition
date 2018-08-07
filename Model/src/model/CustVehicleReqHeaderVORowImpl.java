@@ -39,6 +39,9 @@ public class CustVehicleReqHeaderVORowImpl extends ViewRowImpl implements model.
         LastUpdatedDate,
         VersionNumber,
         UserId,
+        Destination,
+        ReqMi,
+        ReqHr,
         AppModule_DepatmentVO1_1,
         AppModule_VehicleTypeVO1_1;
         private static AttributesEnum[] vals = null;
@@ -83,6 +86,9 @@ public class CustVehicleReqHeaderVORowImpl extends ViewRowImpl implements model.
     public static final int LASTUPDATEDDATE = AttributesEnum.LastUpdatedDate.index();
     public static final int VERSIONNUMBER = AttributesEnum.VersionNumber.index();
     public static final int USERID = AttributesEnum.UserId.index();
+    public static final int DESTINATION = AttributesEnum.Destination.index();
+    public static final int REQMI = AttributesEnum.ReqMi.index();
+    public static final int REQHR = AttributesEnum.ReqHr.index();
     public static final int APPMODULE_DEPATMENTVO1_1 = AttributesEnum.AppModule_DepatmentVO1_1.index();
     public static final int APPMODULE_VEHICLETYPEVO1_1 = AttributesEnum.AppModule_VehicleTypeVO1_1.index();
 
@@ -354,6 +360,54 @@ public class CustVehicleReqHeaderVORowImpl extends ViewRowImpl implements model.
      */
     public void setUserId(BigDecimal value) {
         setAttributeInternal(USERID, value);
+    }
+
+    /**
+     * Gets the attribute value for DESTINATION using the alias name Destination.
+     * @return the DESTINATION
+     */
+    public String getDestination() {
+        return (String) getAttributeInternal(DESTINATION);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for DESTINATION using the alias name Destination.
+     * @param value value to set the DESTINATION
+     */
+    public void setDestination(String value) {
+        setAttributeInternal(DESTINATION, value);
+    }
+
+    /**
+     * Gets the attribute value for REQ_HR using the alias name ReqHr.
+     * @return the REQ_HR
+     */
+    public BigDecimal getReqHr() {
+        return (BigDecimal) getAttributeInternal(REQHR);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for REQ_HR using the alias name ReqHr.
+     * @param value value to set the REQ_HR
+     */
+    public void setReqHr(BigDecimal value) {
+        setAttributeInternal(REQHR, value);
+    }
+
+    /**
+     * Gets the attribute value for REQ_MI using the alias name ReqMi.
+     * @return the REQ_MI
+     */
+    public BigDecimal getReqMi() {
+        return (BigDecimal) getAttributeInternal(REQMI);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for REQ_MI using the alias name ReqMi.
+     * @param value value to set the REQ_MI
+     */
+    public void setReqMi(BigDecimal value) {
+        setAttributeInternal(REQMI, value);
     }
 
     /**

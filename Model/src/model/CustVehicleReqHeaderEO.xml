@@ -155,6 +155,32 @@
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
     TableName="CUST_VEHICLE_REQ_HEADER"/>
+  <Attribute
+    Name="Destination"
+    Precision="500"
+    ColumnName="DESTINATION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CUST_VEHICLE_REQ_HEADER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ReqHr"
+    ColumnName="REQ_HR"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CUST_VEHICLE_REQ_HEADER"/>
+  <Attribute
+    Name="ReqMi"
+    ColumnName="REQ_MI"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CUST_VEHICLE_REQ_HEADER"/>
   <Key
     Name="CustvehiclereqheadereoPrimaryKey"
     PrimaryKey="true">

@@ -40,7 +40,10 @@ public class CustVehicleReqHeaderEOImpl extends EntityImpl {
         LastUpdatedBy,
         LastUpdatedDate,
         VersionNumber,
-        UserId;
+        UserId,
+        Destination,
+        ReqHr,
+        ReqMi;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
 
@@ -82,6 +85,9 @@ public class CustVehicleReqHeaderEOImpl extends EntityImpl {
     public static final int LASTUPDATEDDATE = AttributesEnum.LastUpdatedDate.index();
     public static final int VERSIONNUMBER = AttributesEnum.VersionNumber.index();
     public static final int USERID = AttributesEnum.UserId.index();
+    public static final int DESTINATION = AttributesEnum.Destination.index();
+    public static final int REQHR = AttributesEnum.ReqHr.index();
+    public static final int REQMI = AttributesEnum.ReqMi.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -345,6 +351,54 @@ public class CustVehicleReqHeaderEOImpl extends EntityImpl {
         setAttributeInternal(USERID, value);
     }
 
+
+    /**
+     * Gets the attribute value for Destination, using the alias name Destination.
+     * @return the value of Destination
+     */
+    public String getDestination() {
+        return (String) getAttributeInternal(DESTINATION);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Destination.
+     * @param value value to set the Destination
+     */
+    public void setDestination(String value) {
+        setAttributeInternal(DESTINATION, value);
+    }
+
+    /**
+     * Gets the attribute value for ReqHr, using the alias name ReqHr.
+     * @return the value of ReqHr
+     */
+    public BigDecimal getReqHr() {
+        return (BigDecimal) getAttributeInternal(REQHR);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for ReqHr.
+     * @param value value to set the ReqHr
+     */
+    public void setReqHr(BigDecimal value) {
+        setAttributeInternal(REQHR, value);
+    }
+
+    /**
+     * Gets the attribute value for ReqMi, using the alias name ReqMi.
+     * @return the value of ReqMi
+     */
+    public BigDecimal getReqMi() {
+        return (BigDecimal) getAttributeInternal(REQMI);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for ReqMi.
+     * @param value value to set the ReqMi
+     */
+    public void setReqMi(BigDecimal value) {
+        setAttributeInternal(REQMI, value);
+    }
 
     /**
      * @param vrReqId key constituent

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adf-settings xmlns="http://xmlns.oracle.com/adf/settings">
-<adfc-controller-config xmlns="http://xmlns.oracle.com/adf/controller/config">
+<!--<adfc-controller-config xmlns="http://xmlns.oracle.com/adf/controller/config">
 <lifecycle>
 <phase-listener>
 <listener-id>MyAdfPageListener</listener-id>
@@ -8,5 +8,5 @@
 </class>
 </phase-listener>
 </lifecycle>
-</adfc-controller-config>
+</adfc-controller-config>-->
 </adf-settings>

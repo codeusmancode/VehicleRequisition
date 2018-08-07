@@ -70,25 +70,29 @@
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
-  <SQLQuery><![CDATA[SELECT CustVehicleReqHeaderEO.VR_REQ_ID,      
-       CustVehicleReqHeaderEO.VR_REQUISITION_NUMBER,      
-       CustVehicleReqHeaderEO.DEP_ID,      
-       CustVehicleReqHeaderEO.VR_DEMAND_DATE,      
-       CustVehicleReqHeaderEO.VR_REQUIRED_DATE,      
-       CustVehicleReqHeaderEO.VEHICLE_TYPE_ID,      
-       CustVehicleReqHeaderEO.PURPOSE,      
-       CustVehicleReqHeaderEO.APPROX_DURATION,      
-       CustVehicleReqHeaderEO.APPROX_DISTANCE,      
-       DECODE(CustVehicleReqHeaderEO.STATUS,'PENDING','Pending','ADMIN_APPROVED', 'Approved','HOD_REJECT','Rejected By HOD','ADMIN_REJECT','Rejected By Admin') STATUS,      
-       CustVehicleReqHeaderEO.VR_ORG_ID,      
-       CustVehicleReqHeaderEO.CREATED_BY,      
-       CustVehicleReqHeaderEO.CREATED_DATE,      
-       CustVehicleReqHeaderEO.LAST_UPDATED_BY,      
-       CustVehicleReqHeaderEO.LAST_UPDATED_DATE,      
-       CustVehicleReqHeaderEO.VERSION_NUMBER,      
-       CustVehicleReqHeaderEO.USER_ID     
-FROM  CUST_VEHICLE_REQ_HEADER CustVehicleReqHeaderEO    
-where CustVehicleReqHeaderEO.CREATED_BY = :USER_ID]]></SQLQuery>
+  <SQLQuery><![CDATA[SELECT CustVehicleReqHeaderEO.VR_REQ_ID,            
+       CustVehicleReqHeaderEO.VR_REQUISITION_NUMBER,            
+       CustVehicleReqHeaderEO.DEP_ID,            
+       CustVehicleReqHeaderEO.VR_DEMAND_DATE,            
+       CustVehicleReqHeaderEO.VR_REQUIRED_DATE,            
+       CustVehicleReqHeaderEO.VEHICLE_TYPE_ID,            
+       CustVehicleReqHeaderEO.PURPOSE,            
+       CustVehicleReqHeaderEO.APPROX_DURATION,            
+       CustVehicleReqHeaderEO.APPROX_DISTANCE,            
+       DECODE(CustVehicleReqHeaderEO.STATUS,'PENDING','Pending','ADMIN_APPROVED', 'Approved','HOD_REJECT','Rejected By HOD','ADMIN_REJECT','Rejected By Admin') STATUS,            
+       CustVehicleReqHeaderEO.VR_ORG_ID,            
+       CustVehicleReqHeaderEO.CREATED_BY,            
+       CustVehicleReqHeaderEO.CREATED_DATE,            
+       CustVehicleReqHeaderEO.LAST_UPDATED_BY,            
+       CustVehicleReqHeaderEO.LAST_UPDATED_DATE,            
+       CustVehicleReqHeaderEO.VERSION_NUMBER,            
+       CustVehicleReqHeaderEO.USER_ID   ,     
+       CustVehicleReqHeaderEO.DESTINATION ,    
+        CustVehicleReqHeaderEO.req_mi,    
+         CustVehicleReqHeaderEO.req_hr    
+FROM  CUST_VEHICLE_REQ_HEADER CustVehicleReqHeaderEO          
+where CustVehicleReqHeaderEO.CREATED_BY = :USER_ID   
+order by CustVehicleReqHeaderEO.VR_REQ_ID desc]]></SQLQuery>
   <EntityUsage
     Name="CustVehicleReqHeaderEO"
     Entity="model.CustVehicleReqHeaderEO"/>
@@ -256,6 +260,24 @@ where CustVehicleReqHeaderEO.CREATED_BY = :USER_ID]]></SQLQuery>
     EntityAttrName="UserId"
     EntityUsage="CustVehicleReqHeaderEO"
     AliasName="USER_ID"/>
+  <ViewAttribute
+    Name="Destination"
+    PrecisionRule="true"
+    EntityAttrName="Destination"
+    EntityUsage="CustVehicleReqHeaderEO"
+    AliasName="DESTINATION"/>
+  <ViewAttribute
+    Name="ReqMi"
+    PrecisionRule="true"
+    EntityAttrName="ReqMi"
+    EntityUsage="CustVehicleReqHeaderEO"
+    AliasName="REQ_MI"/>
+  <ViewAttribute
+    Name="ReqHr"
+    PrecisionRule="true"
+    EntityAttrName="ReqHr"
+    EntityUsage="CustVehicleReqHeaderEO"
+    AliasName="REQ_HR"/>
   <ClientRowInterface
     Name="__rowClientInterface">
     <Method

@@ -44,14 +44,38 @@
                             <f:facet name="context">
                                 <af:button text="New Requisition" disabled="#{!bindings.CreateInsert.enabled}" id="b1"
                                            action="#{VehicleRequisition.createNewRequisition}"/>
+                                <af:button text="Refresh" id="b2" action="#{VehicleRequisition.refresh}"/>
+                                <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                                           disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b5">
+                                    <af:resetActionListener/>
+                                </af:button>
+                            </f:facet>
+                            <f:facet name="toolbar">
                                 <af:button text="Submit" id="b3" disabled="#{bindings.Status.inputValue != null}"
                                            partialTriggers="t1" action="#{VehicleRequisition.saveReq}"/>
-                                <af:button text="Refresh" id="b2" action="#{VehicleRequisition.refresh}"/>
                             </f:facet>
-                            <f:facet name="toolbar"/>
                             <f:facet name="menuBar"/>
                             <f:facet name="legend"/>
-                            <f:facet name="info"/>
+                            <f:facet name="info">
+                                <af:panelGroupLayout id="pgl8" layout="horizontal">
+                                    <af:panelGroupLayout id="pgl9" layout="horizontal">
+                                        <af:outputText value="Pending" id="ot4"/>
+                                        <af:spacer width="20" height="20" id="s5"
+                                                   inlineStyle="background-color:#FFF68F;"/>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pgl10" layout="horizontal">
+                                        <af:outputText value="Approved" id="ot5"/>
+                                        <af:spacer width="20" height="20" id="s6"
+                                                   inlineStyle="background-color:#BCED91;"/>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pgl11" layout="horizontal">
+                                        <af:outputText value="Rejected" id="ot6"/>
+                                        <af:spacer width="20" height="20" id="s7"
+                                                   inlineStyle="background-color:#E9C2A6;"/>
+                                    </af:panelGroupLayout>
+                                    
+                                </af:panelGroupLayout>
+                            </f:facet>
                             <af:popup childCreation="deferred" autoCancel="disabled" id="p1" animate="true"
                                       contentDelivery="immediate">
                                 <af:dialog id="d2" dialogListener="#{VehicleRequisition.confirmationDialogListener}"
@@ -95,7 +119,8 @@
                                 <af:column sortProperty="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequisitionNumber.name}"
                                            filterable="false"
                                            headerText="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequisitionNumber.label}"
-                                           id="c2">
+                                           id="c2"
+                                           inlineStyle="background-color:#{row.bindings.Status.inputValue eq 'Pending' ? '#FFF68F' : row.bindings.Status.inputValue eq 'Approved' ? '#BCED91' : row.bindings.Status.inputValue eq 'Rejected By HOD' ? '#E9C2A6' : row.bindings.Status.inputValue eq 'Rejected By Admin' ? '#E9C2A6' :'' };">
                                     <af:inputText value="#{row.bindings.VrRequisitionNumber.inputValue}"
                                                   label="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequisitionNumber.label}"
                                                   required="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequisitionNumber.mandatory}"
@@ -111,7 +136,7 @@
                                 <af:column sortProperty="#{bindings.CustVehicleReqHeaderVO1.hints.DepId.name}"
                                            filterable="false"
                                            headerText="#{bindings.CustVehicleReqHeaderVO1.hints.DepId.label}" id="c3"
-                                           width="200">
+                                           width="140">
                                     <af:selectOneChoice value="#{row.bindings.DepId.inputValue}"
                                                         label="#{row.bindings.DepId.label}"
                                                         required="#{bindings.CustVehicleReqHeaderVO1.hints.DepId.mandatory}"
@@ -124,7 +149,7 @@
                                 <af:column sortProperty="#{bindings.CustVehicleReqHeaderVO1.hints.VrDemandDate.name}"
                                            filterable="false"
                                            headerText="#{bindings.CustVehicleReqHeaderVO1.hints.VrDemandDate.label}"
-                                           id="c4">
+                                           id="c4" width="80">
                                     <f:facet name="filter">
                                         <af:inputDate value="#{bindings.CustVehicleReqHeaderVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.VrDemandDate.value}"
                                                       id="id1">
@@ -145,28 +170,51 @@
                                 <af:column sortProperty="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.name}"
                                            filterable="false"
                                            headerText="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.label}"
-                                           id="c5">
+                                           id="c5" width="180">
                                     <f:facet name="filter">
                                         <af:inputDate value="#{bindings.CustVehicleReqHeaderVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.VrRequiredDate.value}"
                                                       id="id3">
                                             <af:convertDateTime pattern="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.format}"/>
                                         </af:inputDate>
                                     </f:facet>
-                                    <af:inputDate value="#{row.bindings.VrRequiredDate.inputValue}"
-                                                  label="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.label}"
-                                                  required="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.mandatory}"
-                                                  columns="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.displayWidth}"
-                                                  shortDesc="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.tooltip}"
-                                                  id="id4" readOnly="#{row.bindings.Status.inputValue != null}"
-                                                  showRequired="true">
-                                        <f:validator binding="#{row.bindings.VrRequiredDate.validator}"/>
-                                        <af:convertDateTime pattern="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.format}"/>
-                                    </af:inputDate>
+                                    <af:panelGroupLayout id="pgl6" layout="horizontal">
+                                        <af:inputDate value="#{row.bindings.VrRequiredDate.inputValue}"
+                                                      label="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.label}"
+                                                      required="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.mandatory}"
+                                                      columns="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.displayWidth}"
+                                                      shortDesc="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.tooltip}"
+                                                      id="id4" readOnly="#{row.bindings.Status.inputValue != null}"
+                                                      showRequired="true">
+                                            <f:validator binding="#{row.bindings.VrRequiredDate.validator}"/>
+                                            <af:convertDateTime pattern="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.format}"/>
+                                        </af:inputDate>
+                                        <af:panelGroupLayout id="pgl7" layout="vertical"
+                                                             rendered="true">
+                                            <af:inputNumberSpinbox value="#{row.bindings.ReqHr.inputValue}"
+                                                                   required="#{bindings.CustVehicleReqHeaderVO1.hints.ReqHr.mandatory}"
+                                                                   columns="#{bindings.CustVehicleReqHeaderVO1.hints.ReqHr.displayWidth}"
+                                                                   shortDesc="#{bindings.CustVehicleReqHeaderVO1.hints.ReqHr.tooltip}"
+                                                                   id="it13" label="Label 1">
+                                                <f:validator binding="#{row.bindings.ReqHr.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.CustVehicleReqHeaderVO1.hints.ReqHr.format}"/>
+                                            </af:inputNumberSpinbox>
+                                            <af:inputNumberSpinbox value="#{row.bindings.ReqMi.inputValue}"
+                                                                   required="#{bindings.CustVehicleReqHeaderVO1.hints.ReqMi.mandatory}"
+                                                                   columns="#{bindings.CustVehicleReqHeaderVO1.hints.ReqMi.displayWidth}"
+                                                                   shortDesc="#{bindings.CustVehicleReqHeaderVO1.hints.ReqMi.tooltip}"
+                                                                   id="it14" label="Label 2">
+                                                <f:validator binding="#{row.bindings.ReqMi.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.CustVehicleReqHeaderVO1.hints.ReqMi.format}"/>
+                                            </af:inputNumberSpinbox>
+                                        </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
                                 </af:column>
                                 <af:column sortProperty="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDuration.name}"
                                            filterable="false"
                                            headerText="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDuration.label} (hr:mi)"
-                                           id="c8" width="75">
+                                           id="c8" width="50">
                                     <af:inputText value="#{row.bindings.ApproxDuration.inputValue}"
                                                   label="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDuration.label}"
                                                   required="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDuration.mandatory}"
@@ -178,7 +226,7 @@
                                 <af:column sortProperty="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDistance.name}"
                                            filterable="false"
                                            headerText="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDistance.label} (KM)"
-                                           id="c9" width="75">
+                                           id="c9" width="50">
                                     <af:inputText value="#{row.bindings.ApproxDistance.inputValue}"
                                                   label="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDistance.label}"
                                                   required="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDistance.mandatory}"
@@ -192,22 +240,22 @@
                                     </af:inputText>
                                 </af:column>
                                 <af:column sortProperty="#{bindings.CustVehicleReqHeaderVO1.hints.VehicleTypeId.name}"
-                                           filterable="true"
+                                           filterable="false"
                                            headerText="#{bindings.CustVehicleReqHeaderVO1.hints.VehicleTypeId.label}"
-                                           id="c6" rendered="false">
+                                           id="c6" rendered="true" width="80">
                                     <af:selectOneChoice value="#{row.bindings.VehicleTypeId.inputValue}"
                                                         label="#{row.bindings.VehicleTypeId.label}"
                                                         required="#{bindings.CustVehicleReqHeaderVO1.hints.VehicleTypeId.mandatory}"
                                                         shortDesc="#{bindings.CustVehicleReqHeaderVO1.hints.VehicleTypeId.tooltip}"
-                                                        id="soc2">
+                                                        id="soc2" readOnly="#{row.bindings.Status.inputValue != null}">
                                         <f:selectItems value="#{row.bindings.VehicleTypeId.items}" id="si2"/>
                                         <f:validator binding="#{row.bindings.VehicleTypeId.validator}"/>
                                     </af:selectOneChoice>
                                 </af:column>
                                 <af:column sortProperty="#{bindings.CustVehicleReqHeaderVO1.hints.Purpose.name}"
                                            filterable="false"
-                                           headerText="#{bindings.CustVehicleReqHeaderVO1.hints.Purpose.label} and Destination"
-                                           id="c7" width="500">
+                                           headerText="#{bindings.CustVehicleReqHeaderVO1.hints.Purpose.label} "
+                                           id="c7" width="300">
                                     <af:inputText value="#{row.bindings.Purpose.inputValue}"
                                                   label="#{bindings.CustVehicleReqHeaderVO1.hints.Purpose.label}"
                                                   required="#{bindings.CustVehicleReqHeaderVO1.hints.Purpose.mandatory}"
@@ -218,9 +266,20 @@
                                         <f:validator binding="#{row.bindings.Purpose.validator}"/>
                                     </af:inputText>
                                 </af:column>
+                                <af:column id="c18" headerText="Destination" width="200">
+                                    <af:inputText value="#{row.bindings.Destination.inputValue}" simple="true"
+                                                  required="#{bindings.CustVehicleReqHeaderVO1.hints.Destination.mandatory}"
+                                                  columns="#{bindings.CustVehicleReqHeaderVO1.hints.Destination.displayWidth}"
+                                                  maximumLength="#{bindings.CustVehicleReqHeaderVO1.hints.Destination.precision}"
+                                                  shortDesc="#{bindings.CustVehicleReqHeaderVO1.hints.Destination.tooltip}"
+                                                  id="it12">
+                                        <f:validator binding="#{row.bindings.Destination.validator}"/>
+                                    </af:inputText>
+                                </af:column>
                                 <af:column sortProperty="#{bindings.CustVehicleReqHeaderVO1.hints.Status.name}"
                                            filterable="false"
-                                           headerText="#{bindings.CustVehicleReqHeaderVO1.hints.Status.label}" id="c10">
+                                           headerText="#{bindings.CustVehicleReqHeaderVO1.hints.Status.label}" id="c10"
+                                           rendered="false">
                                     <af:inputText value="#{row.bindings.Status.inputValue}"
                                                   label="#{bindings.CustVehicleReqHeaderVO1.hints.Status.label}"
                                                   required="#{bindings.CustVehicleReqHeaderVO1.hints.Status.mandatory}"

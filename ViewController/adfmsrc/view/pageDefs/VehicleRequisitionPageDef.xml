@@ -38,6 +38,9 @@
           <Item Value="LastUpdatedDate"/>
           <Item Value="VersionNumber"/>
           <Item Value="UserId"/>
+          <Item Value="Destination"/>
+          <Item Value="ReqHr"/>
+          <Item Value="ReqMi"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -47,5 +50,6 @@
       </AttrNames>
     </attributeValues>
     <action id="Commit" DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
   </bindings>
 </pageDefinition>
