@@ -1,0 +1,12 @@
+//Groovy Scripts for model.CustVehicleReqHeaderVO
+
+package model
+
+import oracle.jbo.script.annotation.VariableExpression;
+
+@VariableExpression(path="USER_ID")
+def USER_ID_VariableScript_Variable()
+{
+adf.context.sessionScope.userid
+}
+

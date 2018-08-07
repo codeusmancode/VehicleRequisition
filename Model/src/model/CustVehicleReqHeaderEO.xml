@@ -54,7 +54,16 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="CUST_VEHICLE_REQ_HEADER"/>
+    TableName="CUST_VEHICLE_REQ_HEADER">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMAT
+          ResId="model.CustVehicleReqHeaderEO.VrRequiredDate_FMT_FORMAT"/>
+        <FMT_FORMATTER
+          ResId="model.CustVehicleReqHeaderEO.VrRequiredDate_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
   <Attribute
     Name="VehicleTypeId"
     ColumnName="VEHICLE_TYPE_ID"
@@ -191,4 +200,8 @@
       <Item Value="model.CustVehicleReqHeaderEO.VrReqId"/>
     </AttrArray>
   </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </Entity>

@@ -99,7 +99,8 @@
                                       filterVisible="true"
                                       queryListener="#{bindings.CustVehicleReqHeaderVO1Query.processQuery}"
                                       varStatus="vs" id="t1" styleClass="AFStretchWidth" columnStretching="column:c10"
-                                      binding="#{VehicleRequisition.reqTable}">
+                                      binding="#{VehicleRequisition.reqTable}" autoHeightRows="8"
+                                      contentDelivery="immediate">
                                 <af:column sortProperty="#{bindings.CustVehicleReqHeaderVO1.hints.VrReqId.name}"
                                            filterable="true"
                                            headerText="#{bindings.CustVehicleReqHeaderVO1.hints.VrReqId.label}" id="c1"
@@ -170,7 +171,7 @@
                                 <af:column sortProperty="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.name}"
                                            filterable="false"
                                            headerText="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.label}"
-                                           id="c5" width="180">
+                                           id="c5" width="140">
                                     <f:facet name="filter">
                                         <af:inputDate value="#{bindings.CustVehicleReqHeaderVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.VrRequiredDate.value}"
                                                       id="id3">
@@ -188,27 +189,6 @@
                                             <f:validator binding="#{row.bindings.VrRequiredDate.validator}"/>
                                             <af:convertDateTime pattern="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequiredDate.format}"/>
                                         </af:inputDate>
-                                        <af:panelGroupLayout id="pgl7" layout="vertical"
-                                                             rendered="true">
-                                            <af:inputNumberSpinbox value="#{row.bindings.ReqHr.inputValue}"
-                                                                   required="#{bindings.CustVehicleReqHeaderVO1.hints.ReqHr.mandatory}"
-                                                                   columns="#{bindings.CustVehicleReqHeaderVO1.hints.ReqHr.displayWidth}"
-                                                                   shortDesc="#{bindings.CustVehicleReqHeaderVO1.hints.ReqHr.tooltip}"
-                                                                   id="it13" label="Label 1">
-                                                <f:validator binding="#{row.bindings.ReqHr.validator}"/>
-                                                <af:convertNumber groupingUsed="false"
-                                                                  pattern="#{bindings.CustVehicleReqHeaderVO1.hints.ReqHr.format}"/>
-                                            </af:inputNumberSpinbox>
-                                            <af:inputNumberSpinbox value="#{row.bindings.ReqMi.inputValue}"
-                                                                   required="#{bindings.CustVehicleReqHeaderVO1.hints.ReqMi.mandatory}"
-                                                                   columns="#{bindings.CustVehicleReqHeaderVO1.hints.ReqMi.displayWidth}"
-                                                                   shortDesc="#{bindings.CustVehicleReqHeaderVO1.hints.ReqMi.tooltip}"
-                                                                   id="it14" label="Label 2">
-                                                <f:validator binding="#{row.bindings.ReqMi.validator}"/>
-                                                <af:convertNumber groupingUsed="false"
-                                                                  pattern="#{bindings.CustVehicleReqHeaderVO1.hints.ReqMi.format}"/>
-                                            </af:inputNumberSpinbox>
-                                        </af:panelGroupLayout>
                                     </af:panelGroupLayout>
                                 </af:column>
                                 <af:column sortProperty="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDuration.name}"

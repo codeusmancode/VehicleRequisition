@@ -22,8 +22,12 @@
   <Variable
     Name="USER_ID"
     Kind="where"
-    Type="oracle.jbo.domain.Number"
-    DefaultValue="12264"/>
+    Type="oracle.jbo.domain.Number">
+    <TransientExpression
+      Name="VariableScript"
+      trustMode="trusted"
+      CodeSourceName="CustVehicleReqHeaderVO"/>
+  </Variable>
   <ViewAccessor
     Name="AppModule_DepatmentVO1_1"
     ViewObjectName="model.DepatmentVO"
