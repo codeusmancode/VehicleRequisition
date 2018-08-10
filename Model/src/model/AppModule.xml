@@ -20,4 +20,7 @@
   <ViewUsage
     Name="VehicleTypeVO1"
     ViewObjectName="model.VehicleTypeVO"/>
+  <ViewUsage
+    Name="ApprovedRequisitions1"
+    ViewObjectName="model.ApprovedRequisitions"/>
 </AppModule>

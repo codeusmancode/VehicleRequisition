@@ -17,4 +17,19 @@
       <property
          name="exceptionHandler">false</property>
    </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">submitTravel</property>
+      <property
+         name="x">575.3418</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>submitTravel&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">159.79883</property>
+      <property
+         name="page">/submitTravel.jsf</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
 </SDM>

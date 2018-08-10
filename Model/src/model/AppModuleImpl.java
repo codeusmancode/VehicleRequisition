@@ -39,6 +39,13 @@ public class AppModuleImpl extends ApplicationModuleImpl {
     public VehicleTypeVOImpl getVehicleTypeVO1() {
         return (VehicleTypeVOImpl) findViewObject("VehicleTypeVO1");
     }
- 
+
+    /**
+     * Container's getter for ApprovedRequisitions1.
+     * @return ApprovedRequisitions1
+     */
+    public ViewObjectImpl getApprovedRequisitions1() {
+        return (ViewObjectImpl) findViewObject("ApprovedRequisitions1");
+    }
 }
 

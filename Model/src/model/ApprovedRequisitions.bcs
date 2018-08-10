@@ -1,0 +1,12 @@
+//Groovy Scripts for model.ApprovedRequisitions
+
+package model
+
+import oracle.jbo.script.annotation.VariableExpression;
+
+@VariableExpression(path="org_id")
+def org_id_VariableScript_Variable()
+{
+adf.context.sessionScope.ORG_ID
+}
+

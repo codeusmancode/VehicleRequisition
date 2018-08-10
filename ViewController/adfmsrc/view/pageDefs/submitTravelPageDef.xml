@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="submitTravelPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ApprovedRequisitions1" RangeSize="10" DataControl="AppModuleDataControl"
+              id="ApprovedRequisitions1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ApprovedRequisitions1Iterator" id="ApprovedRequisitions1">
+      <nodeDefinition DefName="model.ApprovedRequisitions" Name="ApprovedRequisitions10">
+        <AttrNames>
+          <Item Value="VrReqId"/>
+          <Item Value="VrRequisitionNumber"/>
+          <Item Value="DepId"/>
+          <Item Value="VrDemandDate"/>
+          <Item Value="VrRequiredDate"/>
+          <Item Value="VehicleTypeId"/>
+          <Item Value="Purpose"/>
+          <Item Value="ApproxDuration"/>
+          <Item Value="ApproxDistance"/>
+          <Item Value="Status"/>
+          <Item Value="VrOrgId"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdatedDate"/>
+          <Item Value="VersionNumber"/>
+          <Item Value="UserId"/>
+          <Item Value="Destination"/>
+          <Item Value="ReqHr"/>
+          <Item Value="ReqMi"/>
+          <Item Value="FinalTime"/>
+          <Item Value="EmpName"/>
+          <Item Value="DeptName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction IterBinding="ApprovedRequisitions1Iterator" id="finalizeTravel" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="finalizeTravel" IsViewObjectMethod="false"
+                  DataControl="AppModuleDataControl" InstanceName="bindings.ApprovedRequisitions1Iterator.currentRow"
+                  IsLocalObjectReference="true"/>
+  </bindings>
+</pageDefinition>

@@ -189,4 +189,15 @@ public class VehicleRequisition {
     public RichTable getReqTable() {
         return reqTable;
     }
+
+    public String finalizeTravel() {
+        BindingContainer bindings = getBindings();
+        OperationBinding operationBinding = bindings.getOperationBinding("finalizeTravel");
+        Object result = operationBinding.execute();
+        if (!operationBinding.getErrors().isEmpty()) {
+            return null;
+        }
+        getViewObject("ApprovedRequisitions1Iterator").executeQuery();
+        return null;
+    }
 }

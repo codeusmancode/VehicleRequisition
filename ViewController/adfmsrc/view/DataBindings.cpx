@@ -4,14 +4,14 @@
   <pageMap>
     <page path="/VehicleRequisition.jsf" usageId="view_VehicleRequisitionPageDef"/>
     <page path="/untitled1.jsf" usageId="view_untitled1PageDef"/>
-    
-  
+    <page path="/submitTravel.jsf" usageId="view_submitTravelPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="view_VehicleRequisitionPageDef" path="view.pageDefs.VehicleRequisitionPageDef"/>
     <page id="view_untitled1PageDef" path="view.pageDefs.untitled1PageDef"/>
     <page id="view_tf_vrf_tf_vrf_ExecuteWithParamsPageDef" path="view.pageDefs.tf_vrf_tf_vrf_ExecuteWithParamsPageDef"/>
     <page id="view_vrfPageDef" path="view.pageDefs.vrfPageDef"/>
+    <page id="view_submitTravelPageDef" path="view.pageDefs.submitTravelPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AppModuleDataControl" Package="model"
