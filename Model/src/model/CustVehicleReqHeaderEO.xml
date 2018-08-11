@@ -47,7 +47,18 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="CUST_VEHICLE_REQ_HEADER"/>
+    TableName="CUST_VEHICLE_REQ_HEADER"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMAT
+          ResId="model.CustVehicleReqHeaderEO.VrDemandDate_FMT_FORMAT"/>
+        <FMT_FORMATTER
+          ResId="model.CustVehicleReqHeaderEO.VrDemandDate_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
   <Attribute
     Name="VrRequiredDate"
     ColumnName="VR_REQUIRED_DATE"

@@ -33,16 +33,16 @@
       Name="VariableScript"
       CodeSourceName="ApprovedRequisitions"/>
   </Variable>
-  <SQLQuery><![CDATA[select nvl(papf.full_name,'Contact ERP for Name') emp_name,dept.dept_name,rhh.*         
-from cust_vehicle_req_header rhh,     
-     CUST_DEPARTMENT_NAMES dept,     
-     fnd_user fu,     
-     per_all_people_f papf       
-where rhh.status = 'ADMIN_APPROVED'     
-and dept.dept_id = rhh.dep_id     
-and fu.user_id = rhh.created_by     
-and fu.employee_id = papf.person_id(+)     
-AND rhh.vr_org_id = :org_id  
+  <SQLQuery><![CDATA[select nvl(papf.full_name,'Contact ERP for Name') emp_name,dept.dept_name,rhh.*          
+from cust_vehicle_req_header rhh,      
+     CUST_DEPARTMENT_NAMES dept,      
+     fnd_user fu,      
+     per_all_people_f papf        
+where rhh.status = 'ADMIN_APPROVED'      
+and dept.dept_id = rhh.dep_id      
+and fu.user_id = rhh.created_by      
+and fu.employee_id = papf.person_id(+)      
+AND rhh.vr_org_id = :org_id 
 and sysdate between nvl(papf.effective_start_date,sysdate-1) and nvl(papf.effective_end_date,sysdate+1)]]></SQLQuery>
   <ViewAttribute
     Name="EmpName"
@@ -125,7 +125,16 @@ and sysdate between nvl(papf.effective_start_date,sysdate-1) and nvl(papf.effect
     ColumnType="DATE"
     AliasName="VR_DEMAND_DATE"
     Expression="VR_DEMAND_DATE"
-    SQLType="DATE"/>
+    SQLType="DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMAT
+          ResId="model.ApprovedRequisitions.VrDemandDate_FMT_FORMAT"/>
+        <FMT_FORMATTER
+          ResId="model.ApprovedRequisitions.VrDemandDate_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="VrRequiredDate"
     IsUpdateable="false"
@@ -135,7 +144,16 @@ and sysdate between nvl(papf.effective_start_date,sysdate-1) and nvl(papf.effect
     ColumnType="DATE"
     AliasName="VR_REQUIRED_DATE"
     Expression="VR_REQUIRED_DATE"
-    SQLType="DATE"/>
+    SQLType="DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="model.ApprovedRequisitions.VrRequiredDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="model.ApprovedRequisitions.VrRequiredDate_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="VehicleTypeId"
     IsUpdateable="false"
@@ -323,6 +341,20 @@ and sysdate between nvl(papf.effective_start_date,sysdate-1) and nvl(papf.effect
           ResId="model.ApprovedRequisitions.FinalTime_FMT_FORMAT"/>
       </SchemaBasedProperties>
     </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="VehicleNumber"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VEHICLE_NUMBER"
+    Expression="VEHICLE_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
   </ViewAttribute>
   <AttrArray Name="KeyAttributes">
     <Item Value="VrReqId"/>

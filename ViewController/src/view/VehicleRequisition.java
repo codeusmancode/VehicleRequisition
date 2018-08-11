@@ -34,6 +34,8 @@ import oracle.binding.OperationBinding;
 import oracle.jbo.Row;
 import oracle.jbo.ViewObject;
 
+import org.apache.myfaces.trinidad.event.PollEvent;
+
 public class VehicleRequisition {
     private RichTable reqTable;
 
@@ -199,5 +201,14 @@ public class VehicleRequisition {
         }
         getViewObject("ApprovedRequisitions1Iterator").executeQuery();
         return null;
+    }
+
+    public String refreshApprovedReqVO() {
+        getViewObject("ApprovedRequisitions1Iterator").executeQuery();
+        return null;
+    }
+
+    public void refreshApprovedView(PollEvent pollEvent) {
+        getViewObject("ApprovedRequisitions1Iterator").executeQuery();
     }
 }

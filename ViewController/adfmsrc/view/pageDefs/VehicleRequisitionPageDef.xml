@@ -41,6 +41,8 @@
           <Item Value="Destination"/>
           <Item Value="ReqHr"/>
           <Item Value="ReqMi"/>
+          <Item Value="VehicleNumber"/>
+          <Item Value="FinalTime"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

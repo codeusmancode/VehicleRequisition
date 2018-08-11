@@ -42,7 +42,8 @@ public class ApprovedRequisitionsRowImpl extends ViewRowImpl implements Approved
         Destination,
         ReqHr,
         ReqMi,
-        FinalTime;
+        FinalTime,
+        VehicleNumber;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
 
@@ -90,6 +91,7 @@ public class ApprovedRequisitionsRowImpl extends ViewRowImpl implements Approved
     public static final int REQHR = AttributesEnum.ReqHr.index();
     public static final int REQMI = AttributesEnum.ReqMi.index();
     public static final int FINALTIME = AttributesEnum.FinalTime.index();
+    public static final int VEHICLENUMBER = AttributesEnum.VehicleNumber.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -290,6 +292,22 @@ public class ApprovedRequisitionsRowImpl extends ViewRowImpl implements Approved
         setAttributeInternal(FINALTIME, value);
     }
 
+    /**
+     * Gets the attribute value for the calculated attribute VehicleNumber.
+     * @return the VehicleNumber
+     */
+    public String getVehicleNumber() {
+        return (String) getAttributeInternal(VEHICLENUMBER);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute VehicleNumber.
+     * @param value value to set the  VehicleNumber
+     */
+    public void setVehicleNumber(String value) {
+        setAttributeInternal(VEHICLENUMBER, value);
+    }
+
     public void finalizeTravel(){
         
         Timestamp time =  getFinalTime();
@@ -298,10 +316,11 @@ public class ApprovedRequisitionsRowImpl extends ViewRowImpl implements Approved
         CallableStatement cst = null;
         String message = "Vehicle Availability Confirmed. Data and time is:"+time.toString();
         try{
-            cst = getDBTransaction().createCallableStatement("{call APPS.vrf_engine.finalizeTravel(?,?,?)}", 0);
+            cst = getDBTransaction().createCallableStatement("{call APPS.vrf_engine.finalizeTravel(?,?,?,?)}", 0);
             cst.setInt(1, reqid);
             cst.setString(2, message);
             cst.setDate(3, d);
+            cst.setString(4, getVehicleNumber());
             cst.executeUpdate();
             
             

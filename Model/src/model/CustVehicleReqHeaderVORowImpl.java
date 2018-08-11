@@ -42,6 +42,8 @@ public class CustVehicleReqHeaderVORowImpl extends ViewRowImpl implements model.
         Destination,
         ReqMi,
         ReqHr,
+        FinalTime,
+        VehicleNumber,
         AppModule_DepatmentVO1_1,
         AppModule_VehicleTypeVO1_1;
         private static AttributesEnum[] vals = null;
@@ -89,6 +91,8 @@ public class CustVehicleReqHeaderVORowImpl extends ViewRowImpl implements model.
     public static final int DESTINATION = AttributesEnum.Destination.index();
     public static final int REQMI = AttributesEnum.ReqMi.index();
     public static final int REQHR = AttributesEnum.ReqHr.index();
+    public static final int FINALTIME = AttributesEnum.FinalTime.index();
+    public static final int VEHICLENUMBER = AttributesEnum.VehicleNumber.index();
     public static final int APPMODULE_DEPATMENTVO1_1 = AttributesEnum.AppModule_DepatmentVO1_1.index();
     public static final int APPMODULE_VEHICLETYPEVO1_1 = AttributesEnum.AppModule_VehicleTypeVO1_1.index();
 
@@ -162,13 +166,6 @@ public class CustVehicleReqHeaderVORowImpl extends ViewRowImpl implements model.
         return (Timestamp) getAttributeInternal(VRDEMANDDATE);
     }
 
-    /**
-     * Sets <code>value</code> as attribute value for VR_DEMAND_DATE using the alias name VrDemandDate.
-     * @param value value to set the VR_DEMAND_DATE
-     */
-    public void setVrDemandDate(Timestamp value) {
-        setAttributeInternal(VRDEMANDDATE, value);
-    }
 
     /**
      * Gets the attribute value for VR_REQUIRED_DATE using the alias name VrRequiredDate.
@@ -392,6 +389,22 @@ public class CustVehicleReqHeaderVORowImpl extends ViewRowImpl implements model.
      */
     public void setReqHr(BigDecimal value) {
         setAttributeInternal(REQHR, value);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute FinalTime.
+     * @return the FinalTime
+     */
+    public Timestamp getFinalTime() {
+        return (Timestamp) getAttributeInternal(FINALTIME);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute VehicleNumber.
+     * @return the VehicleNumber
+     */
+    public String getVehicleNumber() {
+        return (String) getAttributeInternal(VEHICLENUMBER);
     }
 
     /**

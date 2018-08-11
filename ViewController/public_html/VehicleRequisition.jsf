@@ -73,6 +73,11 @@
                                         <af:spacer width="20" height="20" id="s7"
                                                    inlineStyle="background-color:#E9C2A6;"/>
                                     </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pgl12" layout="horizontal">
+                                        <af:outputText value="Finalize" id="ot7"/>
+                                        <af:spacer width="20" height="20" id="s8"
+                                                   inlineStyle="background-color:#F87531;"/>
+                                    </af:panelGroupLayout>
                                     
                                 </af:panelGroupLayout>
                             </f:facet>
@@ -121,7 +126,7 @@
                                            filterable="false"
                                            headerText="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequisitionNumber.label}"
                                            id="c2"
-                                           inlineStyle="background-color:#{row.bindings.Status.inputValue eq 'Pending' ? '#FFF68F' : row.bindings.Status.inputValue eq 'Approved' ? '#BCED91' : row.bindings.Status.inputValue eq 'Rejected By HOD' ? '#E9C2A6' : row.bindings.Status.inputValue eq 'Rejected By Admin' ? '#E9C2A6' :'' };">
+                                           inlineStyle="background-color:#{row.bindings.Status.inputValue eq 'Pending' ? '#FFF68F' : row.bindings.Status.inputValue eq 'Approved' ? '#BCED91' : row.bindings.Status.inputValue eq 'Rejected By HOD' ? '#E9C2A6' : row.bindings.Status.inputValue eq 'Rejected By Admin' ? '#E9C2A6' :row.bindings.Status.inputValue eq 'Finalize' ? '#F87531' : '' };">
                                     <af:inputText value="#{row.bindings.VrRequisitionNumber.inputValue}"
                                                   label="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequisitionNumber.label}"
                                                   required="#{bindings.CustVehicleReqHeaderVO1.hints.VrRequisitionNumber.mandatory}"
@@ -194,7 +199,7 @@
                                 <af:column sortProperty="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDuration.name}"
                                            filterable="false"
                                            headerText="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDuration.label} (hr:mi)"
-                                           id="c8" width="50">
+                                           id="c8" width="50" rendered="false">
                                     <af:inputText value="#{row.bindings.ApproxDuration.inputValue}"
                                                   label="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDuration.label}"
                                                   required="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDuration.mandatory}"
@@ -206,7 +211,7 @@
                                 <af:column sortProperty="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDistance.name}"
                                            filterable="false"
                                            headerText="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDistance.label} (KM)"
-                                           id="c9" width="50">
+                                           id="c9" width="50" rendered="false">
                                     <af:inputText value="#{row.bindings.ApproxDistance.inputValue}"
                                                   label="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDistance.label}"
                                                   required="#{bindings.CustVehicleReqHeaderVO1.hints.ApproxDistance.mandatory}"
@@ -242,7 +247,8 @@
                                                   columns="#{bindings.CustVehicleReqHeaderVO1.hints.Purpose.displayWidth}"
                                                   maximumLength="#{bindings.CustVehicleReqHeaderVO1.hints.Purpose.precision}"
                                                   shortDesc="#{bindings.CustVehicleReqHeaderVO1.hints.Purpose.tooltip}"
-                                                  id="it3" readOnly="#{row.bindings.Status.inputValue != null}">
+                                                  id="it3" readOnly="#{row.bindings.Status.inputValue != null}"
+                                                  showRequired="true">
                                         <f:validator binding="#{row.bindings.Purpose.validator}"/>
                                     </af:inputText>
                                 </af:column>
@@ -252,9 +258,21 @@
                                                   columns="#{bindings.CustVehicleReqHeaderVO1.hints.Destination.displayWidth}"
                                                   maximumLength="#{bindings.CustVehicleReqHeaderVO1.hints.Destination.precision}"
                                                   shortDesc="#{bindings.CustVehicleReqHeaderVO1.hints.Destination.tooltip}"
-                                                  id="it12">
+                                                  id="it12" showRequired="true">
                                         <f:validator binding="#{row.bindings.Destination.validator}"/>
                                     </af:inputText>
+                                </af:column>
+                                <af:column id="c19" headerText="Official Use" width="250">
+                                    <af:panelGroupLayout id="pgl7" layout="vertical">
+                                        <af:outputText value="#{row.VehicleNumber}"
+                                                       shortDesc="#{bindings.CustVehicleReqHeaderVO1.hints.VehicleNumber.tooltip}"
+                                                       id="ot79"/>
+                                        <af:outputText value="#{row.FinalTime}"
+                                                       shortDesc="#{bindings.CustVehicleReqHeaderVO1.hints.FinalTime.tooltip}"
+                                                       id="ot8">
+                                            <af:convertDateTime pattern="#{bindings.CustVehicleReqHeaderVO1.hints.FinalTime.format}"/>
+                                        </af:outputText>
+                                    </af:panelGroupLayout>
                                 </af:column>
                                 <af:column sortProperty="#{bindings.CustVehicleReqHeaderVO1.hints.Status.name}"
                                            filterable="false"

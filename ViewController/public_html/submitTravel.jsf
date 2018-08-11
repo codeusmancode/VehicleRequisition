@@ -39,11 +39,14 @@
                 <f:facet name="second">
                     <af:panelGroupLayout id="pgl2" layout="vertical">
                         <af:panelHeader text="Finalize Travel" id="ph1">
-                            <f:facet name="context"/>
+                            <f:facet name="context">
+                                <af:button text="Refresh" id="b1" action="#{VehicleRequisition.refreshApprovedReqVO}"/>
+                            </f:facet>
                             <f:facet name="toolbar"/>
                             <f:facet name="menuBar"/>
                             <f:facet name="legend"/>
                             <f:facet name="info"/>
+                            <af:poll id="p1" interval="30000" pollListener="#{VehicleRequisition.refreshApprovedView}"/>
                             <af:table value="#{bindings.ApprovedRequisitions1.collectionModel}" var="row"
                                       rows="#{bindings.ApprovedRequisitions1.rangeSize}"
                                       emptyText="#{bindings.ApprovedRequisitions1.viewable ? 'No data to display.' : 'Access Denied.'}"
@@ -116,7 +119,7 @@
                                                    id="ot10"/>
                                 </af:column>
                                 <af:column headerText="Approx Distance"
-                                           id="c9" width="50">
+                                           id="c9" width="50" rendered="false">
                                     <af:outputText value="#{row.ApproxDistance}"
                                                    shortDesc="#{bindings.ApprovedRequisitions1.hints.ApproxDistance.tooltip}"
                                                    id="ot11">
@@ -197,6 +200,16 @@
                                                    shortDesc="#{bindings.ApprovedRequisitions1.hints.Destination.tooltip}"
                                                    id="ot20"/>
                                 </af:column>
+                                <af:column id="c24" headerText="Vehicle Number">
+                                    <af:inputText value="#{row.bindings.VehicleNumber.inputValue}" simple="true"
+                                                  required="#{bindings.ApprovedRequisitions1.hints.VehicleNumber.mandatory}"
+                                                  columns="#{bindings.ApprovedRequisitions1.hints.VehicleNumber.displayWidth}"
+                                                  maximumLength="#{bindings.ApprovedRequisitions1.hints.VehicleNumber.precision}"
+                                                  shortDesc="#{bindings.ApprovedRequisitions1.hints.VehicleNumber.tooltip}"
+                                                  id="it1">
+                                        <f:validator binding="#{row.bindings.VehicleNumber.validator}"/>
+                                    </af:inputText>
+                                </af:column>
                                 <af:column id="c22" headerText="Final Time">
                                     <af:inputDate value="#{row.bindings.FinalTime.inputValue}"
                                                   required="#{bindings.ApprovedRequisitions1.hints.FinalTime.mandatory}"
@@ -237,4 +250,5 @@
             </af:panelSplitter>
         </af:form>
     </af:document>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:VehicleRequisition-->
 </f:view>
